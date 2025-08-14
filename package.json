@@ -10,7 +10,9 @@
     "lint": "eslint . --fix",
     "fix-style": "npm run format & npm run lint",
     "preview": "vite preview",
-    "prepare": "husky && husky install"
+    "prepare": "husky && husky install",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^19.1.1",
