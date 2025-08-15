@@ -1,69 +1,54 @@
-# React + TypeScript + Vite
+# Test Task — React SPA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a Single Page Application (SPA) with two sections. Each section has its own logic, is lazy-loaded, and follows modern UI/UX principles.
 
-Currently, two official plugins are available:
+# Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React + TypeScript
+- React Router DOM
+- React RND
+- TailwindCSS
+- Vite
+- WebSocket API (for Task 2)
+- ESLint + Prettier + Husky (DevTools)
 
-## Expanding the ESLint configuration
+# Application Sections
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. First Task — Interactive Workspace:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- 5 drag-and-drop blocks in a grid layout
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- Blocks can be resized
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Z-index control: bring clicked block to front
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Delete blocks individually
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Reset button restores all blocks to initial position/size
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- State is persisted in localStorage after refresh
+
+2. Second Task — Bitcoin Transaction Tracker (WebSocket)
+
+- Connects to Blockchain WebSocket API
+
+- Displays live incoming Bitcoin transactions
+
+- Shows sender address, receiver address, and amount (BTC)
+
+- Calculates total amount of all received transactions
+
+- Includes control buttons:
+  - Start — subscribe to live updates
+
+  - Stop — pause updates but keep data
+
+  - Reset — clear transaction list and total
+
+# Architecture
+
+- Lazy loading via React.lazy and Suspense
+
+- TailwindCSS for quick and responsive styling
+
+- React Router used for page routing
